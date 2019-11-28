@@ -17,23 +17,10 @@ console.log("Scrape finished | Importing data into object");
 let rawHtml = cineworld.scrapePage(url);
 let cineworldCinema = cineworld.importData({ rawHtml: rawHtml });
 console.log("Class setup");
-console.log("Outputting movie titles");
-console.log(cineworldCinema.outputMovieTitles());
 
+let showingsData = cineworldCinema.buildShowingsData();
+files.writeJsonToFile('./cache/showings.json', showingsData);
+console.log("Showings data written to json")
 
-
-// Need to get the next two weeks in dates as a string - Cineworld only? 
-// Loop through each one and fetch moveies with their titles/posters/times
-// Cache everything that is found
-// Store the cache in a DB
-// Repeat for each cinema
-// Just do one location for now
-
-// Store all this data and output
-// Need to group showings on a per movie basis
-// Then show all showings at all cinemas under one movie 
-// Colour coded buttons for showings? 
-// These should have URL's that go to the cinemas site
-
-// Finish process
+// Make sure process finishes
 process.exitCode = 0;

@@ -3,7 +3,7 @@
 const Cinema = require('./classes/cinema'); 
 const scraper = require('./classes/scraper');
 const files = require('./fs-functions');
-const useCache = false;
+const useCache = true;
 
 module.exports = {
     scrapePage: function(url) {
