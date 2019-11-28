@@ -27,6 +27,22 @@ module.exports = {
     importData: function(html) {
         const cineworld = new Cinema(html);
         return cineworld;
+    },
+
+
+    scrapeByUrl(url) {
+        let html = scraper.scrapeUrl(url);
+        return html;
     }
+
+
+
+
+
+
+
+
+
+
 };
 

@@ -45,12 +45,13 @@ module.exports = {
     scrapePage: function(url) {
         console.log(url);
 
-        let html = this.runScraper();
+        let html = this.runScraper(url);
 
         return html;
 
     },
-    runScraper: async function() {
+    runScraper: function(url) {
+        console.log("Run Scraper");
         puppeteer.launch()
             .then(browser => browser.newPage())
             .then(page => {
@@ -61,10 +62,38 @@ module.exports = {
             })
             .then(html => {
                 console.log("finished running, returning html");
-                resolve(html);
+                return html;
             })
             .catch(err => {
                 reject(err);
             });
+    },
+    scrapeUrl: function(url) {
+
+        
+        console.log('scrapeUrl');
+        let rawHtml = '';
+        
+        void (async() => {
+            try {
+
+                const browser = await puppeteer.launch();
+                const page = await browser.newPage();
+                await page.goto(url);
+                await page.content((html) => {
+                    rawHtml = html;
+                    console.log("Got the HTML!");
+                })
+                
+                await browser.close();
+            } catch (err) {
+                console.error(err);
+            }
+
+            
+        });
+        
+        return rawHtml;
+
     }
 }

@@ -25,6 +25,12 @@ let jsonExample = {
 };
 ```
 
+Scraping Fix
+=============
+- Pull everything out of classes etc and just put everything together in one main function
+- Need to find a way to iterate over many URL's
+
+
 Other Notes
 ============
 - Need to get the next two weeks in dates as a string - Cineworld only? 
