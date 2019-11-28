@@ -1,7 +1,7 @@
 // Cineworld scrape and import functions
 
 const Cinema = require('./classes/cinema'); 
-const Scraper = require('./classes/scraper');
+const scraper = require('./classes/scraper');
 const files = require('./fs-functions');
 const useCache = false;
 
@@ -16,9 +16,9 @@ module.exports = {
         if (useCache) {
             html = files.fetchCacheData('./cache/site-page-cache.data');
         } else {
-            const scraper = new Scraper(url);
-            scraper.scrape();
-            html = scraper.rawHtml;
+            // const scraper = new Scraper(url);
+            // scraper.scrape();
+            html = scraper.scrapePage(url);
         }
 
         return html;
