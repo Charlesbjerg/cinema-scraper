@@ -12,13 +12,14 @@ const url = 'https://www.cineworld.co.uk/#/buy-tickets-by-cinema?in-cinema=8106'
 const cacheFile = "./cache/movie-cache.json";
 const rawPageData = "./cache/site-page-cache.data"
 
-//
 console.log("Starting scrape");
 console.log("Scrape finished | Importing data into object");
-let cineworldCinema = cineworld.importData({ rawHtml: cineworld.scrapePage(url)});
+let rawHtml = cineworld.scrapePage(url);
+let cineworldCinema = cineworld.importData({ rawHtml: rawHtml });
 console.log("Class setup");
 console.log("Outputting movie titles");
 console.log(cineworldCinema.outputMovieTitles());
+
 
 
 // Need to get the next two weeks in dates as a string - Cineworld only? 
@@ -34,3 +35,5 @@ console.log(cineworldCinema.outputMovieTitles());
 // Colour coded buttons for showings? 
 // These should have URL's that go to the cinemas site
 
+// Finish process
+process.exitCode = 0;
